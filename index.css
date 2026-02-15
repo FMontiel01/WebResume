@@ -2,29 +2,35 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   color: #111;
   background: #fff;
   line-height: 1.35;
 }
 
+p {
+  margin: 4px 0;
+}
+
+
 .page {
   max-width: 900px;
   margin: 0 auto;
-  padding: 28px 22px;
+  padding: 16px 16px;
 }
 
 .header {
   text-align: center;
   border-bottom: 2px solid #000;
-  padding-bottom: 10px;
-  margin-bottom: 18px;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .name {
   margin: 0;
   font-size: 28px;
   letter-spacing: 0.6px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .contact {
@@ -33,11 +39,12 @@ body {
 }
 
 .section {
-  margin: 14px 0;
+  margin: 8px 0;
 }
 
+
 .section-title {
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
@@ -58,12 +65,13 @@ body {
 }
 
 ul {
-  margin: 6px 0 8px 22px;
+  margin: 4px 0 6px 18px;
 }
 
 li {
-  margin: 4px 0;
+  margin: 2px 0;
 }
+
 
 .link-line {
   margin: 0 0 10px 0;
@@ -98,11 +106,35 @@ a {
 
 /* Print: removes weird spacing + keeps it looking like a real resume */
 @media print {
-  .page {
-    max-width: none;
-    padding: 0;
+  /* Tight page margins */
+  @page { margin: 0.45in; }
+
+  /* Remove extra padding around the page */
+  .page { padding: 0 !important; }
+
+  /* Slightly smaller text + tighter line height for print */
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+    line-height: 1.15;
   }
-  a {
-    text-decoration: none;
-  }
+
+  /* Tighten spacing everywhere */
+  .header { margin-bottom: 8px; padding-bottom: 4px; }
+  .section { margin: 6px 0; }
+
+  .section-title { margin: 0 0 3px 0; padding-bottom: 1px; }
+
+  p { margin: 3px 0; }
+  .label { margin: 6px 0 1px 0; }
+
+  ul { margin: 3px 0 5px 16px; }
+  li { margin: 1px 0; }
+
+  /* Optional: hide the footer link when printing (saves a line) */
+  .footer { display: none; }
+
+  /* Keep it clean */
+  a { text-decoration: none; color: #000; }
 }
+
