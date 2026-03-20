@@ -96,45 +96,118 @@ a {
 .footer {
   margin-top: 18px;
   padding-top: 12px;
-  border-top: 1px solid #000;
   text-align: center;
 }
 
-.pdf {
-  font-weight: 700;
+/* Tighten spacing in Projects section */
+.section .item-title {
+  margin-top: 6px;
+  margin-bottom: 2px;
 }
 
-/* Print: removes weird spacing + keeps it looking like a real resume */
+.section .item-title + p {
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.section ul {
+  margin-top: 2px;
+}
+
+
 @media print {
-  /* Tight page margins */
-  @page { margin: 0.45in; }
-
-  /* Remove extra padding around the page */
-  .page { padding: 0 !important; }
-
-  /* Slightly smaller text + tighter line height for print */
-  body {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 11pt;
-    line-height: 1.15;
+  /* Letter page + slightly tighter margins */
+  @page {
+    size: letter;
+    margin: 0.45in;
   }
 
-  /* Tighten spacing everywhere */
-  .header { margin-bottom: 8px; padding-bottom: 4px; }
-  .section { margin: 6px 0; }
+  /* Keep the Lewis look but save vertical space */
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.75pt;   /* tiny reduction */
+    line-height: 1.10;    /* tighter but readable */
+  }
 
-  .section-title { margin: 0 0 3px 0; padding-bottom: 1px; }
+  .page {
+    padding: 0 !important;
+  }
 
-  p { margin: 3px 0; }
-  .label { margin: 6px 0 1px 0; }
+  .header {
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+  }
 
-  ul { margin: 3px 0 5px 16px; }
-  li { margin: 1px 0; }
+  .section {
+    margin: 5px 0;
+  }
 
-  /* Optional: hide the footer link when printing (saves a line) */
-  .footer { display: none; }
+  .section-title {
+    margin: 0 0 2px 0;
+    padding-bottom: 1px;
+  }
 
-  /* Keep it clean */
-  a { text-decoration: none; color: #000; }
+  p,
+  .edu-strong,
+  .job-strong {
+    margin: 2px 0;
+  }
+
+  .label {
+    margin: 4px 0 1px 0;
+  }
+
+  .item-title {
+    margin: 6px 0 3px 0;
+  }
+
+  ul {
+    margin: 2px 0 4px 14px;
+  }
+
+  li {
+    margin: 1px 0;
+  }
+
+  /* Hide footer link in PDF */
+  .footer {
+    display: none;
+  }
+
+  /* Remove underlines in the printed PDF */
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  /* Avoid awkward splits */
+  .section,
+  ul {
+    page-break-inside: avoid;
+  }
+
+    /* 1) Save space in the EXPERIENCE section (2nd to last section) */
+  .section:nth-last-of-type(2) {
+    margin-bottom: 2px;
+  }
+
+  .section:nth-last-of-type(2) ul {
+    margin: 1px 0 2px 14px;
+  }
+
+  .section:nth-last-of-type(2) li {
+    margin: 0;
+  }
+
+  /* 2) Pull CERTIFICATIONS (last section) up more */
+  .section:last-of-type {
+    margin-top: -14px; /* was -6px */
+  }
+
+  .section:last-of-type ul {
+    margin: 1px 0 0 14px;
+  }
 }
+
+
 
