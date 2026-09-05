@@ -1,213 +1,260 @@
-/* Lewis-style: clean, simple, print-friendly */
+:root {
+  color-scheme: light;
+  --ink: #111827;
+  --muted: #4b5563;
+  --accent: #153e75;
+  --rule: #9ca3af;
+  --paper: #ffffff;
+  --canvas: #eef2f7;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: 'Times New Roman', Times, serif;
-  color: #111;
-  background: #fff;
-  line-height: 1.35;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 1.45;
 }
-
-p {
-  margin: 4px 0;
-}
-
 
 .page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 16px 16px;
+  width: min(100% - 32px, 960px);
+  margin: 32px auto;
+  padding: 42px 52px;
+  background: var(--paper);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
 }
 
 .header {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--ink);
   text-align: center;
-  border-bottom: 2px solid #000;
-  padding-bottom: 6px;
-  margin-bottom: 10px;
 }
 
-.name {
+h1 {
   margin: 0;
-  font-size: 28px;
-  letter-spacing: 0.6px;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
 }
 
 .contact {
-  margin: 8px 0 0 0;
-  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 8px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus-visible {
+  color: #0b63ce;
 }
 
 .section {
-  margin: 8px 0;
+  margin-top: 17px;
 }
 
-
-.section-title {
-  margin: 0 0 4px 0;
-  font-size: 16px;
-  font-weight: 700;
+h2 {
+  margin: 0 0 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0.055em;
   text-transform: uppercase;
-  border-bottom: 1px solid #000;
-  padding-bottom: 2px;
 }
 
-.label {
-  margin: 10px 0 2px 0;
-  font-weight: 700;
-  font-size: 14px;
+h3,
+p {
+  margin: 0;
 }
 
-.item-title {
-  margin: 10px 0 6px 0;
-  font-size: 15px;
+h3 {
+  font-size: 0.98rem;
+}
+
+h3 span {
+  font-weight: 400;
+}
+
+.entry-heading,
+.project-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.entry-meta,
+.project-links {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.entry-meta p,
+.project-links {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.skills-list {
+  margin: 0;
+}
+
+.skills-list div {
+  display: flex;
+  gap: 5px;
+}
+
+.skills-list dt {
+  flex: 0 0 auto;
   font-weight: 700;
+}
+
+.skills-list dd {
+  margin: 0;
+}
+
+.resume-entry + .resume-entry {
+  margin-top: 13px;
 }
 
 ul {
-  margin: 4px 0 6px 18px;
+  margin: 5px 0 0 21px;
+  padding: 0;
 }
 
 li {
   margin: 2px 0;
 }
 
-
-.link-line {
-  margin: 0 0 10px 0;
-  font-size: 14px;
-}
-
-a {
-  color: #000;
-  text-decoration: underline;
-}
-
-.right {
-  float: right;
-}
-
-.edu-strong,
-.job-strong {
-  font-weight: 700;
-  margin: 0;
-}
-
-.footer {
-  margin-top: 18px;
-  padding-top: 12px;
+footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
   text-align: center;
 }
 
-/* Tighten spacing in Projects section */
-.section .item-title {
-  margin-top: 6px;
-  margin-bottom: 2px;
+.pdf {
+  display: inline-block;
+  padding: 9px 15px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.section .item-title + p {
-  margin-top: 0;
-  margin-bottom: 2px;
-}
+@media (max-width: 700px) {
+  .page {
+    width: 100%;
+    margin: 0;
+    padding: 28px 20px;
+    box-shadow: none;
+  }
 
-.section ul {
-  margin-top: 2px;
-}
+  .entry-heading,
+  .project-heading,
+  .skills-list div {
+    display: block;
+  }
 
+  .entry-meta,
+  .project-links {
+    margin-top: 2px;
+    text-align: left;
+  }
+
+  .skills-list div + div {
+    margin-top: 4px;
+  }
+}
 
 @media print {
-  /* Letter page + slightly tighter margins */
   @page {
     size: letter;
     margin: 0.45in;
   }
 
-  /* Keep the Lewis look but save vertical space */
   body {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 10.75pt;   /* tiny reduction */
-    line-height: 1.10;    /* tighter but readable */
+    background: #ffffff;
+    font-size: 10pt;
+    line-height: 1.22;
   }
 
   .page {
-    padding: 0 !important;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
 
   .header {
-    margin-bottom: 6px;
-    padding-bottom: 3px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+  }
+
+  h1 {
+    font-size: 20pt;
+  }
+
+  .contact,
+  .entry-meta p,
+  .project-links {
+    font-size: 8.5pt;
   }
 
   .section {
-    margin: 5px 0;
+    margin-top: 8px;
   }
 
-  .section-title {
-    margin: 0 0 2px 0;
+  h2 {
+    margin-bottom: 4px;
     padding-bottom: 1px;
+    font-size: 10pt;
   }
 
-  p,
-  .edu-strong,
-  .job-strong {
-    margin: 2px 0;
-  }
-
-  .label {
-    margin: 4px 0 1px 0;
-  }
-
-  .item-title {
-    margin: 6px 0 3px 0;
+  h3 {
+    font-size: 9.5pt;
   }
 
   ul {
-    margin: 2px 0 4px 14px;
+    margin-top: 2px;
   }
 
   li {
-    margin: 1px 0;
-  }
-
-  /* Hide footer link in PDF */
-  .footer {
-    display: none;
-  }
-
-  /* Remove underlines in the printed PDF */
-  a {
-    text-decoration: none;
-    color: #000;
-  }
-
-  /* Avoid awkward splits */
-  .section,
-  ul {
-    page-break-inside: avoid;
-  }
-
-    /* 1) Save space in the EXPERIENCE section (2nd to last section) */
-  .section:nth-last-of-type(2) {
-    margin-bottom: 2px;
-  }
-
-  .section:nth-last-of-type(2) ul {
-    margin: 1px 0 2px 14px;
-  }
-
-  .section:nth-last-of-type(2) li {
     margin: 0;
   }
 
-  /* 2) Pull CERTIFICATIONS (last section) up more */
-  .section:last-of-type {
-    margin-top: -14px; /* was -6px */
+  .resume-entry + .resume-entry {
+    margin-top: 6px;
   }
 
-  .section:last-of-type ul {
-    margin: 1px 0 0 14px;
+  footer {
+    display: none;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .section,
+  .resume-entry,
+  .entry-heading {
+    break-inside: avoid;
   }
 }
-
-
-
